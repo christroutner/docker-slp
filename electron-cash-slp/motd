@@ -1,0 +1,9 @@
+Welcome to an ElectrumX server.
+
+Bitcoin version: $DAEMON_VERSION
+Bitcoin subversion: $DAEMON_SUBVERSION
+
+ElectrumX version: $SERVER_VERSION
+ElectrumX subversion: $SERVER_SUBVERSION
+
+Donation address: $DONATION_ADDRESS

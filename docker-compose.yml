@@ -1,0 +1,4 @@
+# Launches an ElectrumX server and an Electron Cash SLP wallet in daemon mode.
+# The wallet pulls Bitcoin Cash data from the ElectrumX server. The wallet
+# also provides a JSON RPC interface for slp.js to talk to, and validate
+# SLP token transactions.

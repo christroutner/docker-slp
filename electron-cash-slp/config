@@ -1,0 +1,6 @@
+{
+    "config_version": 2,
+    "rpcpassword": "bitboxbitbox",
+    "rpcuser": "user",
+    "rpcport": 5111
+}

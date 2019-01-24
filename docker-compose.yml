@@ -9,9 +9,12 @@ electrumx:
   dockerfile: Dockerfile
   ports:
     - "50001:50001" # <host port>:<container port>
-    - "50002:50002"
   volumes:
     - /home/trout/work/bch/electrumx-data:/srv/db
+  environment:
+      - COIN=BitcoinCashABC
+      # Replace "<...>" elements with your own values.
+      - DAEMON_URL=http://<rpcuser>:<rpcpass>@<ip>:<port>
   restart: always
 
 electron-cash-slp:
@@ -21,6 +24,4 @@ electron-cash-slp:
     - electrumx
   ports:
     - "5111:5111"  # <host port>:<container port>
-#  volumes:
-#    - ./logs:/home/coinjoin/consolidating-coinjoin/logs
   restart: always

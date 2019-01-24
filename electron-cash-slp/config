@@ -3,5 +3,6 @@
     "rpcpassword": "",
     "rpcuser": "user",
     "rpcport": 5111,
-    "rpchost": "0.0.0.0"
+    "rpchost": "0.0.0.0",
+    "server": "172.17.0.1:50001:t"
 }

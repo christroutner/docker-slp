@@ -19,11 +19,11 @@ COPY default_wallet /home/safeuser/.electron-cash/wallets/default_wallet
 # Expose the port defined in the config file.
 EXPOSE 5111
 
-COPY dummyapp.js dummyapp.js
-CMD ["node", "dummyapp.js"]
+#COPY dummyapp.js dummyapp.js
+#CMD ["node", "dummyapp.js"]
 
-#COPY launch-electron.sh launch-electron.sh
-#CMD ["./launch-electron.sh"]
+COPY launch-electron.sh launch-electron.sh
+CMD ["./launch-electron.sh"]
 
 #WORKDIR /home/safeuser/Electron-Cash-SLP-3.4.3
 #CMD ["./electron-cash", "daemon", "-v"]

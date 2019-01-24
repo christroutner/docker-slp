@@ -1,16 +1,49 @@
+# Docker SLP
+This repository contains Docker containers, orchestrated with Docker Compose.
+The purpose is to create the infrastructure needed to validate Simple Ledger
+Protocol (SLP) token transactions.
 
-# docker-electrumx
+Two Docker containers are created:
+1. An ElectrumX server which monitors the BCH blockchain and creates its own
+local database of transaction data. This takes up about 25GB of disk space.
 
-Based on [this docker container by Dan Connolly](https://github.com/Danconnolly/docker-electrumx)
+2. An [Electron Cash SLP](https://github.com/simpleledger/Electron-Cash-SLP)
+wallet running in daemon mode. This wallet has an RPC interface that
+[slp.js](https://github.com/simpleledger/slpjs) uses for SLP transactions. The
+wallet pulls its raw data from the ElextrumX server.
 
-An easily configurable Docker image for running an Electrum server.
+See the READMEs in the sub-directories for more information.
 
-## Usage
+# Installation and Usage
+It's assumed that you are starting with a fresh installation of Ubuntu
+18.04 LTS on a 64-bit machine.
+It's also assumed that you are installing as a
+[non-root user with sudo privileges](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04).
 
-- Build the container with the `build-image` docker script.
+1. Install Docker on the host system.
+[This tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04)
+shows how to install Docker on a Ubuntu system. It's specifically targeted to
+Digital Ocean's cloud servers, but should work for any Ubuntnu system.
 
-- See the [example run-image script](example-run-image) to customize a bash shell
-script for easy starting of this Docker container.
+2. Install Docker Compose too.
+[This tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04) shows how to do so on a Ubuntu system.
+
+3. Clone this repository in your home directory with the following command:
+`git clone https://github.com/christroutner/docker-slp`
+
+4. Run the [electrumx](electrumx) container by itself and allow it to sync to
+the blockchain. This will take 1-2 days and will take up approximately 25GB of
+disk space.
+
+5. Build the docker containers:
+`docker-compose build --no-cache`
+
+6. Bring everything online by running the following command:
+`docker-compose up -d`
+
+This curl command can be used to test the system to see if it accurately validating
+SLP transactions:
+`curl --data-binary '{"jsonrpc": "2.0", "id":"testing", "method": "slpvalidate", "params": ["2504b5b6a6ec42b040a71abce1acd71592f7e2a3e33ffa9c415f91a6b76deb45", false, false] }' -H 'content-type: text/plain;' http://localhost:5111`
 
 ## License
 

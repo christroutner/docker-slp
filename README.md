@@ -4,7 +4,8 @@ The purpose is to create the infrastructure needed to validate Simple Ledger
 Protocol (SLP) token transactions.
 
 Two Docker containers are created:
-1. An ElectrumX server which monitors the BCH blockchain and creates its own
+1. An [ElectrumX server](https://electrumx.readthedocs.io/en/latest/) which
+monitors the BCH blockchain and creates its own
 local database of transaction data. This takes up about 25GB of disk space.
 
 2. An [Electron Cash SLP](https://github.com/simpleledger/Electron-Cash-SLP)
@@ -18,7 +19,7 @@ See the READMEs in the sub-directories for more information.
 It's assumed that you are starting with a fresh installation of Ubuntu
 18.04 LTS on a 64-bit machine.
 It's also assumed that you are installing as a
-[non-root user with sudo privileges](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04).
+[non-root user with sudo privileges](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04).
 
 1. Install Docker on the host system.
 [This tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04)

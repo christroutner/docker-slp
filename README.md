@@ -21,25 +21,32 @@ It's assumed that you are starting with a fresh installation of Ubuntu
 It's also assumed that you are installing as a
 [non-root user with sudo privileges](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04).
 
-1. Install Docker on the host system.
+- Install Docker on the host system.
 [This tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04)
 shows how to install Docker on a Ubuntu system. It's specifically targeted to
 Digital Ocean's cloud servers, but should work for any Ubuntnu system.
 
-2. Install Docker Compose too.
+- Install Docker Compose too.
 [This tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04) shows how to do so on a Ubuntu system.
 
-3. Clone this repository in your home directory with the following command:
+- Clone this repository in your home directory with the following command:
 `git clone https://github.com/christroutner/docker-slp`
 
-4. Run the [electrumx](electrumx) container by itself and allow it to sync to
+- Run the [electrumx](electrumx) container by itself and allow it to sync to
 the blockchain. This will take 1-2 days and will take up approximately 25GB of
 disk space.
 
-5. Build the docker containers:
+- Build the [python base](python-base) image first, as it will be needed by the
+[Electron Cash SLP wallet](electron-cash-slp) image.
+
+- customize the [docker-compose.yml](docker-compose.yml) file. Replace the
+placeholders in the `DAEMON_URL` environment variable with the RPC information
+for your own Bitcoin Cash full node.
+
+- Build the docker containers:
 `docker-compose build --no-cache`
 
-6. Bring everything online by running the following command:
+- Bring everything online by running the following command:
 `docker-compose up -d`
 
 This curl command can be used to test the system to see if it accurately validating

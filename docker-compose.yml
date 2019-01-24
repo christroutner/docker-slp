@@ -2,3 +2,25 @@
 # The wallet pulls Bitcoin Cash data from the ElectrumX server. The wallet
 # also provides a JSON RPC interface for slp.js to talk to, and validate
 # SLP token transactions.
+
+
+electrumx:
+  build: electrumx
+  dockerfile: Dockerfile
+  ports:
+    - "50001:50001" # <host port>:<container port>
+    - "50002:50002"
+  volumes:
+    - /home/trout/work/bch/electrumx-data:/srv/db
+  restart: always
+
+electron-cash-slp:
+  build: electron-cash-slp
+  dockerfile: Dockerfile
+  links:
+    - electrumx
+  ports:
+    - "5111:5111"  # <host port>:<container port>
+#  volumes:
+#    - ./logs:/home/coinjoin/consolidating-coinjoin/logs
+  restart: always

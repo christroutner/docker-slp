@@ -16,9 +16,6 @@ COPY motd /srv/motd
 # These env vars should be set at run time.
 ENV COIN=BitcoinCashABC
 ENV DB_DIRECTORY=/srv/db
-ENV DAEMON_HOST=127.0.0.1
-ENV DAEMON_PORT=8333
-ENV DAEMON_URL=""
 ENV TCP_PORT=50001
 #ENV SSL_PORT=50002
 #ENV SSL_CERTFILE=/srv/server.crt

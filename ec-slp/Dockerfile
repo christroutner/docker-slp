@@ -45,6 +45,7 @@ RUN tar -xvf 3.4.3.tar.gz
 WORKDIR /home/safeuser/Electron-Cash-SLP-3.4.3
 
 # Install python dependencies.
+RUN sudo pip3 install -I pyqt5
 RUN sudo python3 setup.py install
 
 

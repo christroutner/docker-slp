@@ -25,7 +25,7 @@ ENV TCP_PORT=50001
 #ENV SSL_KEYFILE=/srv/server.key
 ENV DONATION_ADDRESS=none
 ENV BANNER_FILE=/srv/motd
-ENV HOST=""
+ENV HOST="0.0.0.0"
 
 USER electrumx
 VOLUME /srv/db

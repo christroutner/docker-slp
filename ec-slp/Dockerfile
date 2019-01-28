@@ -45,7 +45,8 @@ RUN tar -xvf 3.4.3.tar.gz
 WORKDIR /home/safeuser/Electron-Cash-SLP-3.4.3
 
 # Install python dependencies.
-RUN sudo pip3 install -I pyqt5
+#RUN sudo pip3 install -I pyqt5-sip
+RUN sudo apt install -y python3-pyqt5
 RUN sudo python3 setup.py install
 
 
@@ -59,8 +60,8 @@ COPY default_wallet /home/safeuser/.electron-cash/wallets/default_wallet
 # Expose the port defined in the config file.
 EXPOSE 5111
 
-#COPY dummyapp.js dummyapp.js
-#CMD ["node", "dummyapp.js"]
+COPY dummyapp.js dummyapp.js
+CMD ["node", "dummyapp.js"]
 
-COPY launch-electron.sh launch-electron.sh
-CMD ["./launch-electron.sh"]
+#COPY launch-electron.sh launch-electron.sh
+#CMD ["./launch-electron.sh"]
